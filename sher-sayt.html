@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senga, G</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#14081f;
+    --plum:#2a0f33;
+    --garnet:#9c2650;
+    --petal:#f2b3c6;
+    --gold:#e9cf9b;
+    --ivory:#fbf1ee;
+    --serif:"Cormorant Garamond", "Georgia", serif;
+    --sans:"Jost", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(120% 80% at 50% 0%, var(--plum) 0%, var(--night) 60%) fixed;
+    color:var(--ivory);
+    font-family:var(--serif);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  #sky{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+  section{position:relative;z-index:1}
+
+  /* ---------- Kirish ---------- */
+  .intro{
+    min-height:100svh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:2rem 1.5rem;
+  }
+  .g-wrap{cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .g-wrap svg{
+    height:min(52svh, 420px);width:auto;display:block;
+    filter:drop-shadow(0 0 28px rgba(242,179,198,.35));
+    overflow:visible;
+  }
+  .g-wrap text{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    stroke:var(--gold);stroke-width:1.6;
+    stroke-dasharray:3200;stroke-dashoffset:3200;
+    fill:transparent;
+    animation:draw 4.2s cubic-bezier(.6,.05,.3,1) .3s forwards, fillin 2.2s ease 3.6s forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fillin{to{fill:url(#gfill);stroke-width:.8}}
+
+  .love{
+    font-style:italic;font-weight:300;
+    font-size:clamp(2rem, 8vw, 3.4rem);
+    letter-spacing:.02em;
+    margin-top:.4rem;
+    color:var(--petal);
+    opacity:0;animation:rise 2s ease 4.6s forwards;
+  }
+  .go{
+    margin-top:2.4rem;
+    font-family:var(--sans);font-weight:300;font-size:.95rem;letter-spacing:.08em;
+    color:var(--ivory);text-decoration:none;
+    border:1px solid rgba(233,207,155,.5);
+    padding:.85rem 1.8rem;border-radius:999px;
+    opacity:0;animation:rise 1.6s ease 5.4s forwards;
+    transition:background .3s, border-color .3s;
+  }
+  .go:hover,.go:focus-visible{background:rgba(233,207,155,.12);border-color:var(--gold);outline:none}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* ---------- Sher ---------- */
+  .poem{
+    max-width:34rem;margin:0 auto;
+    padding:18vh 1.5rem 10vh;
+    text-align:center;
+  }
+  .poem h2{
+    font-style:italic;font-weight:300;
+    font-size:clamp(1.6rem,5vw,2.1rem);
+    color:var(--gold);
+    margin-bottom:12vh;
+  }
+  .stanza{margin-bottom:14vh}
+  .line{
+    display:block;
+    font-size:clamp(1.3rem,4.6vw,1.75rem);
+    line-height:1.75;
+    font-weight:500;
+    opacity:0;transform:translateY(10px);
+    transition:opacity 1.4s ease, transform 1.4s ease;
+    transition-delay:calc(var(--i) * .45s);
+  }
+  .line.em{font-style:italic;color:var(--petal)}
+  .stanza.in .line{opacity:1;transform:none}
+
+  .heart{
+    display:block;margin:0 auto 14vh;width:22px;height:22px;
+    opacity:0;transition:opacity 1.5s ease;
+  }
+  .heart.in{opacity:.9;animation:beat 2.4s ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+
+  /* ---------- Yakun ---------- */
+  .end{
+    min-height:90svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:2rem 1.5rem 6rem;
+  }
+  .end .big{
+    font-style:italic;font-weight:300;
+    font-size:clamp(2.2rem,9vw,4rem);
+    color:var(--petal);
+    line-height:1.25;
+    opacity:0;transform:translateY(12px);
+    transition:opacity 2s ease, transform 2s ease;
+  }
+  .end .sign{
+    margin-top:1.2rem;
+    font-size:clamp(4rem,18vw,8rem);font-style:italic;font-weight:300;line-height:1;
+    background:linear-gradient(160deg,var(--gold),var(--petal));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    opacity:0;transition:opacity 2.4s ease 1s;
+  }
+  .end.in .big{opacity:1;transform:none}
+  .end.in .sign{opacity:1}
+  .again{
+    margin-top:2.5rem;font-family:var(--sans);font-weight:300;font-size:.85rem;letter-spacing:.08em;
+    color:rgba(251,241,238,.6);text-decoration:none;
+  }
+  .again:hover,.again:focus-visible{color:var(--gold);outline:none}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .g-wrap text{animation:none;stroke-dashoffset:0;fill:url(#gfill);stroke-width:.8}
+    .love,.go{animation:none;opacity:1}
+    .line,.end .big,.end .sign,.heart{opacity:1;transform:none;transition:none;animation:none}
+  }
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<section class="intro" id="top">
+  <div class="g-wrap" id="g" title="Bos">
+    <svg viewBox="0 0 360 460" role="img" aria-label="G harfi">
+      <defs>
+        <linearGradient id="gfill" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#e9cf9b"/>
+          <stop offset="1" stop-color="#f2b3c6"/>
+        </linearGradient>
+      </defs>
+      <text x="180" y="390" text-anchor="middle" font-size="470">G</text>
+    </svg>
+  </div>
+  <p class="love">Seni sevaman</p>
+  <a class="go" href="#sher">Sherni o‘qish</a>
+</section>
+
+<section class="poem" id="sher">
+  <h2>Senga, G</h2>
+
+  <div class="stanza">
+    <span class="line" style="--i:0">Sen kirding hayotga tong yog‘dusidek,</span>
+    <span class="line" style="--i:1">Qorong‘u qalbimga nur sochding, jonim.</span>
+    <span class="line" style="--i:2">Ko‘zlaringda ko‘rdim butun olamni,</span>
+    <span class="line em" style="--i:3">Sen mening yagona orzu-armonim.</span>
+  </div>
+
+  <div class="stanza">
+    <span class="line" style="--i:0">Kulsang — bahor kirar dilimga birdan,</span>
+    <span class="line" style="--i:1">Gullar ham uyalib bosh egar sendan.</span>
+    <span class="line" style="--i:2">Ismingni aytsam bas — titraydi yurak,</span>
+    <span class="line em" style="--i:3">Bu ism menga qo‘shiq, bu ism — tilak.</span>
+  </div>
+
+  <div class="stanza">
+    <span class="line" style="--i:0">Dunyoda ming go‘zal bor, bilaman,</span>
+    <span class="line" style="--i:1">Ko‘zim esa faqat seni izlaydi.</span>
+    <span class="line" style="--i:2">Ming marta tanlasam — ming bor tanlayman,</span>
+    <span class="line em" style="--i:3">Yuragim faqat sening nomingni so‘ylaydi.</span>
+  </div>
+
+  <div class="stanza">
+    <span class="line" style="--i:0">Sen yonimda bo‘lsang — har kun bayramdir,</span>
+    <span class="line" style="--i:1">Sensiz esa soatlar ham sust o‘tar.</span>
+    <span class="line" style="--i:2">Qo‘lingni ushlasam, yo‘llar yaqindir,</span>
+    <span class="line em" style="--i:3">Dunyoning g‘amlari bir zumda ketar.</span>
+  </div>
+
+  <svg class="heart" viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="#f2b3c6" d="M12 21s-8-5.4-8-11.2C4 6.6 6.3 5 8.5 5c1.5 0 2.8.8 3.5 2 .7-1.2 2-2 3.5-2C17.7 5 20 6.600 20 9.800 20 15.600 12 21 12 21z"/>
+  </svg>
+
+  <div class="stanza">
+    <span class="line" style="--i:0">Bugun senga aytar so‘zim bitta xolos,</span>
+    <span class="line" style="--i:1">Uni ming bor aytsam ham to‘ymasman:</span>
+    <span class="line" style="--i:2">Seni sevaman — butun borlig‘im bilan,</span>
+    <span class="line em" style="--i:3">Umrim oxirigacha ayrilmasman.</span>
+  </div>
+</section>
+
+<section class="end" id="end">
+  <p class="big">Seni sevaman,</p>
+  <p class="sign">G</p>
+  <a class="again" href="#top">Boshiga qaytish</a>
+</section>
+
+<script>
+/* ---------- Sher satrlari sekin paydo bo‘ladi ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.35});
+document.querySelectorAll('.stanza, .heart, .end').forEach(el=>io.observe(el));
+
+/* ---------- Gul barglari va yuraklar ---------- */
+const cv = document.getElementById('sky');
+const ctx = cv.getContext('2d');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W, H, dpr;
+function resize(){
+  dpr = Math.min(devicePixelRatio || 1, 2);
+  W = innerWidth; H = innerHeight;
+  cv.width = W*dpr; cv.height = H*dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+addEventListener('resize', resize); resize();
+
+const colors = ['rgba(242,179,198,','rgba(233,207,155,','rgba(156,38,80,'];
+function petal(startTop){
+  return {
+    x: Math.random()*W,
+    y: startTop ? -20 : Math.random()*H,
+    s: 5 + Math.random()*8,
+    vy: .25 + Math.random()*.5,
+    vx: -.15 + Math.random()*.3,
+    rot: Math.random()*Math.PI*2,
+    vr: (Math.random()-.5)*.012,
+    sway: Math.random()*Math.PI*2,
+    a: .18 + Math.random()*.35,
+    c: colors[Math.floor(Math.random()*colors.length)]
+  };
+}
+const count = Math.round(Math.min(46, W/18));
+const petals = Array.from({length:count}, ()=>petal(false));
+const bursts = [];
+
+function heartPath(x,y,s){
+  ctx.beginPath();
+  ctx.moveTo(x, y + s*.35);
+  ctx.bezierCurveTo(x, y - s*.1, x - s*.75, y - s*.1, x - s*.75, y + s*.35);
+  ctx.bezierCurveTo(x - s*.75, y + s*.8, x, y + s*1.05, x, y + s*1.3);
+  ctx.bezierCurveTo(x, y + s*1.05, x + s*.75, y + s*.8, x + s*.75, y + s*.35);
+  ctx.bezierCurveTo(x + s*.75, y - s*.1, x, y - s*.1, x, y + s*.35);
+  ctx.closePath();
+}
+
+function frame(t){
+  ctx.clearRect(0,0,W,H);
+  for(const p of petals){
+    p.y += p.vy; p.x += p.vx + Math.sin(t/1800 + p.sway)*.3; p.rot += p.vr;
+    if(p.y > H + 20){ Object.assign(p, petal(true)); }
+    ctx.save();
+    ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+    ctx.fillStyle = p.c + p.a + ')';
+    ctx.beginPath();
+    ctx.ellipse(0,0,p.s, p.s*.55, 0, 0, Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+  }
+  for(let i=bursts.length-1;i>=0;i--){
+    const b = bursts[i];
+    b.x += b.vx; b.y += b.vy; b.vy += .012; b.life -= .008;
+    if(b.life <= 0){ bursts.splice(i,1); continue; }
+    ctx.fillStyle = 'rgba(242,179,198,' + Math.max(b.life,0) + ')';
+    heartPath(b.x, b.y, b.s);
+    ctx.fill();
+  }
+  if(!reduce) requestAnimationFrame(frame);
+}
+if(!reduce) requestAnimationFrame(frame);
+
+/* G harfini bossa — yuraklar uchadi */
+document.getElementById('g').addEventListener('click', (e)=>{
+  const r = e.currentTarget.getBoundingClientRect();
+  const cx = r.left + r.width/2, cy = r.top + r.height/2;
+  for(let i=0;i<22;i++){
+    const a = Math.random()*Math.PI*2, sp = 1 + Math.random()*2.6;
+    bursts.push({x:cx, y:cy, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp - 1.5, s:6+Math.random()*9, life:1});
+  }
+  if(reduce) requestAnimationFrame(frame);
+});
+</script>
+</body>
+</html>
